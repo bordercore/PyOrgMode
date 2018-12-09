@@ -541,7 +541,7 @@ class OrgTable(OrgPlugin):
 class OrgNode(OrgPlugin):
     def __init__(self):
         OrgPlugin.__init__(self)
-        self.todo_list = ['TODO']
+        self.todo_list = ['TODO', 'IN PROGRESS']
         self.done_list = ['DONE']
         # If the line starts by an indent, it is not a node
         self.keepindent = False
