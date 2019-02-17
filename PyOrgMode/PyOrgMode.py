@@ -709,6 +709,13 @@ class OrgNode(OrgPlugin):
                 self.content.append(element)
             self.reparent_cleanlevels(self)
 
+        def prepend_clean(self, element):
+            if isinstance(element, list):
+                self.content = element + self.content
+            else:
+                self.content.insert(0, element)
+            self.reparent_cleanlevels(self)
+
         def reparent_cleanlevels(self, element=None, level=None):
             """
             Reparent the childs elements of 'element' and make levels simpler.
