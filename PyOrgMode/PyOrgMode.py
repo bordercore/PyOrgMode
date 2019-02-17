@@ -1012,6 +1012,21 @@ class OrgDataStructure(OrgElement):
             return found_nodes
 
     @staticmethod
+    def get_nodes_by_tag(node, tag, found_nodes=[]):
+
+        if isinstance(node, OrgElement):
+            try:
+                if tag in node.tags:
+                    found_nodes.append(node)
+            except AttributeError:
+                pass
+            for node in node.content:
+                OrgDataStructure.get_nodes_by_tag(node, tag, found_nodes)
+            return found_nodes
+        else:
+            return found_nodes
+
+    @staticmethod
     def get_node_by_heading(node, heading, found_nodes=[]):
 
         if isinstance(node, OrgElement):
